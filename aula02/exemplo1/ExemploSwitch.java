@@ -5,9 +5,13 @@ import java.util.Scanner;
 public class ExemploSwitch {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        int numero = 5;
+        int numero;
 
-/*         if(numero == 1) {
+        System.out.println("Digite o número:");
+        numero = teclado.nextInt();
+
+/*      
+        if(numero == 1) {
             System.out.println("Segunda");
         } else {
             if(numero == 2) {
@@ -16,11 +20,10 @@ public class ExemploSwitch {
                 if(numero == 3) {
                     System.out.println("Quarta");
                 }
+                // etc ...
             }
         } 
 */
-        System.out.println("Digite o número:");
-        numero = teclado.nextInt();
 
         switch (numero) {
             case 1:
@@ -32,11 +35,12 @@ public class ExemploSwitch {
             case 3:
                 System.out.println("Quarta");
                 break;
+            // etc ...
             default:
                 System.out.println("Opção inválida");
                 break;
         }
 
-
+        teclado.close();
     }
 }
