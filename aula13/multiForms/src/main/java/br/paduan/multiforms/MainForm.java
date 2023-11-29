@@ -7,6 +7,7 @@ package br.paduan.multiforms;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,11 +38,19 @@ public class MainForm extends javax.swing.JFrame {
         txtEmailCadastro = new javax.swing.JTextField();
         btnGravar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        formPesquisar = new javax.swing.JInternalFrame();
+        jLabel3 = new javax.swing.JLabel();
+        txtIDPesquisa = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
+        btnCancelarPesquisar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtArea = new javax.swing.JTextArea();
         container = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
         menuPesquisar = new javax.swing.JMenuItem();
+        menuAtualizar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         formCadastro.setTitle("Cadastrar Usuário");
@@ -52,6 +61,11 @@ public class MainForm extends javax.swing.JFrame {
         jLabel2.setText("email");
 
         btnGravar.setText("Gravar");
+        btnGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGravarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +114,63 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap(142, Short.MAX_VALUE))
         );
 
+        formPesquisar.setTitle("Pesquisar Usuários");
+        formPesquisar.setVisible(true);
+
+        jLabel3.setText("ID");
+
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+
+        btnCancelarPesquisar.setText("Cancelar");
+        btnCancelarPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarPesquisarActionPerformed(evt);
+            }
+        });
+
+        txtArea.setEditable(false);
+        txtArea.setColumns(20);
+        txtArea.setRows(5);
+        jScrollPane1.setViewportView(txtArea);
+
+        javax.swing.GroupLayout formPesquisarLayout = new javax.swing.GroupLayout(formPesquisar.getContentPane());
+        formPesquisar.getContentPane().setLayout(formPesquisarLayout);
+        formPesquisarLayout.setHorizontalGroup(
+            formPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formPesquisarLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formPesquisarLayout.createSequentialGroup()
+                        .addComponent(btnPesquisar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarPesquisar))
+                    .addComponent(txtIDPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        formPesquisarLayout.setVerticalGroup(
+            formPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formPesquisarLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(formPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtIDPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(formPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPesquisar)
+                    .addComponent(btnCancelarPesquisar))
+                .addGap(33, 33, 33))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agência 1.0");
 
@@ -125,7 +196,15 @@ public class MainForm extends javax.swing.JFrame {
         jMenu1.add(menuCadastrar);
 
         menuPesquisar.setText("Pesquisar");
+        menuPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPesquisarActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuPesquisar);
+
+        menuAtualizar.setText("Atualizar");
+        jMenu1.add(menuAtualizar);
 
         jMenuBar1.add(jMenu1);
 
@@ -172,6 +251,60 @@ public class MainForm extends javax.swing.JFrame {
         container.remove(formCadastro);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnCancelarPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPesquisarActionPerformed
+        txtIDPesquisa.setText("");
+        formPesquisar.setVisible(false);
+        container.remove(formPesquisar);
+    }//GEN-LAST:event_btnCancelarPesquisarActionPerformed
+
+    private void menuPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarActionPerformed
+         if(container.getComponentCount() > 0){ // só abrir uma janela de cada vez
+            return;
+        }
+        
+        container.add(formPesquisar);
+        
+        try {
+            formPesquisar.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        formPesquisar.setVisible(true);
+    }//GEN-LAST:event_menuPesquisarActionPerformed
+
+    private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+        String nome = txtNomeCadastro.getText();
+        String email = txtEmailCadastro.getText();
+        
+        Usuario usuario = new Usuario(nome, email);
+        
+        boolean resposta =  UsuarioDAO.inserir(usuario);
+        
+        if(resposta) {
+            JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Falha ao cadastrar");
+                  
+        }
+        
+        txtNomeCadastro.setText("");
+        txtEmailCadastro.setText("");
+    }//GEN-LAST:event_btnGravarActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        int id = Integer.parseInt(txtIDPesquisa.getText());
+        
+        Usuario usuario = UsuarioDAO.buscarPorID(id);
+        
+        if(usuario != null) {
+            txtArea.setText(usuario.toString());
+        } else {
+            txtArea.setText("");
+            JOptionPane.showMessageDialog(this, "Usuário não encontrado.");
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,17 +342,25 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelarPesquisar;
     private javax.swing.JButton btnGravar;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JDesktopPane container;
     private javax.swing.JInternalFrame formCadastro;
+    private javax.swing.JInternalFrame formPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem menuAtualizar;
     private javax.swing.JMenuItem menuCadastrar;
     private javax.swing.JMenuItem menuPesquisar;
+    private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txtEmailCadastro;
+    private javax.swing.JTextField txtIDPesquisa;
     private javax.swing.JTextField txtNomeCadastro;
     // End of variables declaration//GEN-END:variables
 }
